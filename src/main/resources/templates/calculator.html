@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type="number"] {
+            margin: 5px;
+            width: 100px;
+        }
+        select, button {
+            margin: 5px;
+        }
+        .result, .error {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic Calculator</h1>
+    <form action="/calculator/calculate" method="post">
+        <input type="number" step="any" name="num1" required>
+        <select name="operation" required>
+            <option value="add">+</option>
+            <option value="subtract">-</option>
+            <option value="multiply">×</option>
+            <option value="divide">÷</option>
+            <option value="log">ln</option>
+            <option value="sine">sin</option>
+            <option value="cosine">cos</option>
+        </select>
+        <input type="number" step="any" name="num2">
+        <button type="submit">Calculate</button>
+    </form>
+    <div class="result">
+        <p>Result: <span th:text="${result}">0</span></p>
+    </div>
+    <div class="error">
+        <p th:text="${error}"></p>
+    </div>
+</body>
+</html>
